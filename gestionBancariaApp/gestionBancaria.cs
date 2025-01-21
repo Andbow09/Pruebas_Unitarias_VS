@@ -31,6 +31,7 @@ public class gestionBancaria
         if (cantidad <= 0)
         {
             mostrarError(ERR_CANTIDAD_INDICADA_NEGATIVA);
+            throw new ArgumentOutOfRangeException("La cantidad indicada es negativa ");
         }
         else
         {
@@ -41,6 +42,7 @@ public class gestionBancaria
             }
             else
                 mostrarError(ERR_SALDO_INSUFICIENTE);
+                throw new ArgumentOutOfRangeException("Saldo Insuficiente");
 
         }
  
@@ -52,11 +54,12 @@ public class gestionBancaria
         if (cantidad < 0)
         {
             mostrarError(ERR_CANTIDAD_INDICADA_NEGATIVA);
+            throw new ArgumentOutOfRangeException("La cantidad indicada es negativa ");
         }
         else
         {
             if (cantidad > 0)
-                saldo -= cantidad;
+                saldo += cantidad;
         }
       
     }
@@ -68,7 +71,7 @@ public class gestionBancaria
         switch (error)
         {
             case ERR_CANTIDAD_INDICADA_NEGATIVA:
-                MessageBox.Show("Cantidad no válidá, sólo se admiten cantidades positivas.");
+                MessageBox.Show("Cantidad no válida, sólo se admiten cantidades positivas.");
                 break;
             case ERR_OPERACION_NO_SELECCIONADA:
                 MessageBox.Show("Seleccione la operación a realizar");
